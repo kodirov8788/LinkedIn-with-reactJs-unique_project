@@ -34,7 +34,7 @@ function header() {
                 </div>
                 <div className="header__iconText">
                     <ChatBubbleOutlineIcon className="header__icon" />
-                    <p>TEXT</p>
+                    <a href="chat">Chat</a>
                 </div>
                 <div className="header__iconText">
                     <NotificationsNoneIcon className="header__icon" />
