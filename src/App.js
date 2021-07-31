@@ -18,10 +18,7 @@ import Mobileapp from './components/footerLink/mobileApp/Mobilapp'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
+  Route
 } from "react-router-dom";
 
 function App() {
