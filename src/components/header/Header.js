@@ -1,5 +1,6 @@
-import React from 'react'
-import './Header.css'
+import React, { useState } from 'react';
+import './Header.css';
+import InputLinks from './InputLink/InputLinks';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import RssFeedIcon from '@material-ui/icons/RssFeed';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
@@ -11,9 +12,17 @@ import Avatar from '@material-ui/core/Avatar';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 
-function header() {
+function Header() {
+    const [show, setShow] = useState(false);
+
     return (
         <div className="header">
+
+            <div>
+                {
+                    show ? <span className="back__effect" onClick={() => setShow(false)}></span> : null
+                }
+            </div>
             <div className="linkedin">
                 <LinkedInIcon className="linkedin__icon" />
             </div>
@@ -41,7 +50,16 @@ function header() {
                     <p>TEXT</p>
                 </div>
             </div>
-            <div className="header__searchInput">
+            <div className="header__searchInput" onClick={() => setShow(true)}>
+
+                {/* <div className="inputlinks">
+                    <InputLinks />
+                </div> */}
+                {
+                    show ? <div className="inputlinks">
+                        <InputLinks />
+                    </div> : null
+                }
 
                 <SearchIcon className="header__searchButton" />
                 <input type="text" className="header__input" placeholder='Search' />
@@ -59,8 +77,11 @@ function header() {
                 <MoreHorizIcon />
                 <p>OTHER</p>
             </div>
-        </div>
+
+
+        </div >
     )
+
 }
 
-export default header
+export default Header;

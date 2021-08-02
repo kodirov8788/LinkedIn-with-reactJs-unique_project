@@ -8,7 +8,21 @@
     justify-content: space-between;
     flex-wrap: nowrap;
 
+
 }
+
+.back__effect {
+    width: 1440px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1.5px);
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    transition: all 0.8 linear;
+}
+
+
 
 .linkedin {
     width: 10%;
@@ -30,6 +44,7 @@
     display: flex;
     width: 38%;
     justify-content: space-around;
+    border-right: 1px solid #f4f4f4;
 }
 
 .header__iconText {
@@ -54,13 +69,16 @@
     justify-content: center;
     width: 28%;
     height: 80px;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
+    background-color: #fff;
     /* border: none; */
     padding: 0 20px;
     border-top: none;
     border-bottom: none;
-    border-left: 1px solid #f4f4f4;
-    border-right: 1px solid #f4f4f4;
+    /* border-left: 1px solid #f4f4f4; */
+    /* border-right: 1px solid #f4f4f4; */
+    position: relative;
+    z-index: 10;
 }
 
 .header__input {
@@ -69,6 +87,7 @@
     font-size: 16px;
     outline: none;
     border: none;
+
 }
 
 .header__searchButton {
