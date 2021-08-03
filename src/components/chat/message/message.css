@@ -1,0 +1,185 @@
+.chat__message__body {
+    width: 100%;
+    height: 395px;
+    background: #ccc;
+    background: #fff;
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #f4f4f4;
+    overflow-y: auto;
+}
+
+/*
+.chat__messages__body::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chat__messages__body::-webkit-scrollbar-track {
+    background-color: darkgrey;
+}
+
+.chat__messages__body::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px #fff;
+    background-color: #0077b5;
+} */
+
+
+.container__left {
+    position: relative;
+    /* border: 2px solid #000; */
+    padding-left: 20px;
+    margin-top: 10px;
+    height: auto;
+    display: grid;
+    justify-content: left;
+    animation: message 0.5s ease-in;
+
+}
+
+@keyframes message {
+    0% {
+        transform: translateY(50px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.chat__massages__body__text__light {
+    margin-left: 30px;
+    color: rgb(255, 255, 255, 0.8);
+    background-color: #0275b1;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 10px;
+    border-bottom-left-radius: 0;
+    padding-top: 5px;
+    display: flex;
+    height: auto;
+    position: relative;
+    max-width: 410px;
+
+}
+
+.chat__massages__body__text__light p {
+    word-wrap: break-word;
+    max-width: 400px;
+    color: #fff;
+    padding: 10px 0;
+}
+
+
+.container__left__content {
+    display: flex;
+    justify-content: left;
+}
+
+.chat__massages__body__left__effect {
+    width: 0;
+    position: absolute;
+    bottom: 0;
+    left: -20px;
+    border-style: solid;
+    border-width: 0 0 21px 20px;
+    border-color: transparent transparent #0275b1 transparent;
+}
+
+.container__right {
+    position: relative;
+    /* border: 2px solid #000; */
+    display: grid;
+    justify-content: right;
+    margin-top: 10px;
+    margin-right: 30px;
+    transform-origin: bottom;
+
+}
+
+.chat__massages__body__text__dark {
+    margin-right: 20px;
+    color: rgb(0, 0, 0, 0.7);
+    background-color: #0077b5;
+    border-radius: 5px;
+    padding-right: 15px;
+    padding-left: 10px;
+    padding-top: 5px;
+    height: auto;
+    display: flex;
+    /* justify-content: space-between; */
+    /* flex-direction: row; */
+    max-width: 100%;
+}
+
+.chat__massages__body__text__dark p {
+    word-wrap: break-word;
+    max-width: 400px;
+    color: #fff;
+    padding: 10px 0;
+
+}
+
+.container__right__content {
+    display: flex;
+    justify-content: right;
+    align-items: inherit;
+    flex-direction: row;
+}
+
+
+
+.chat__massages__body__tik__blue__place {
+    margin-left: 30px;
+    color: #0275b1;
+    font-size: 10px;
+    display: flex;
+}
+
+.left__tik__sent__time {
+    color: #0275b1;
+    font-size: 12px;
+    display: flex;
+    margin-left: 10px;
+    animation: mymove 0.5s linear;
+}
+
+@keyframes mymove {
+    0% {
+        transform: scale(0);
+    }
+
+    90% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.left__tik__sent__time>p {
+    margin-right: 5px;
+}
+
+
+.right__tik__sent__time {
+    position: absolute;
+    top: 50px;
+    right: 65px;
+    color: #0275b1;
+    font-size: 12px;
+    display: flex;
+}
+
+.right__tik__sent__time p {
+    margin-right: 5px;
+}
+
+.tik__unread {
+    margin-right: 0px;
+}
+
+.chat__massages__body__tik__icons {
+    font-weight: 100;
+}
