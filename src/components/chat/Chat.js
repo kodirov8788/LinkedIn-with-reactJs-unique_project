@@ -6,23 +6,28 @@ import AttachmentTwoToneIcon from '@material-ui/icons/AttachmentTwoTone';
 import SendTwoToneIcon from '@material-ui/icons/SendTwoTone';
 import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import DoneAllOutlinedIcon from '@material-ui/icons/DoneAllOutlined';
+import db from '../../firebase';
 // import FunctionsOutlined from '@material-ui/icons';
 
 
 function Chat() {
     const [data, setData] = useState("");
     const [messages, setMessages] = useState([
-        { username: 'Sardor', text: 'hey guys' },
-        { username: 'Atham', text: 'hello' }
+        // { username: 'Sardor', message: 'hey guys' },
+        // { username: 'Atham', message: 'hello' }
     ]);
     const [username, setUsername] = useState('');
-
+    useEffect(() => {
+        db.collection('messages').onSnapshot(snapshot => {
+            setMessages(snapshot?.docs.map(doc => doc.data()))
+        });
+    }, []);
     useEffect(() => {
         setUsername(prompt('Please enter your name'))
-    }, [])
+    }, []);
 
     const sendMessage = (e) => {
-        setMessages([...messages, { username: username, text: data }]);
+        setMessages([...messages, { username: username, message: data }]);
         setData('');
 
         // if (data === "") {
@@ -51,40 +56,13 @@ function Chat() {
     const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
 
-    const [users, setUsers] = useState([
-        {
-            id: 1,
-            title: "Joe",
-            type: "admin"
-        }
-    ]);
-
-
-    // function handleAddNewUser(e) {
-    //     if (data === "") {
-    //         alert('Please fill in the box')
-    //     } else {
-    //         const updateUsers = [
-    //             ...users,
-    //             {
-    //                 id: users.length + 1,
-    //                 title: data,
-    //                 type: "member"
-    //             }
-
-    //         ];
-    //         setUsers(updateUsers);
-
+    // const [users, setUsers] = useState([
+    //     {
+    //         id: 1,
+    //         title: "Joe",
+    //         type: "admin"
     //     }
-    //     setData("")
-    //     e.preventDefault()
-    // }
-
-
-
-
-
-
+    // ]);
 
     return (
         <div className="chat__body">
@@ -119,59 +97,57 @@ function Chat() {
                     </div>
                 </div>
                 <div className="chat__message__body">
-                    {
+                    {username === "Kodirov" ?
                         messages.map(message => (
-                            // {
-                            //     users.map((user) => (
-                            // <div
-                            //     key={user.id}>
-                            <div className="container__left">
-                                <div clasName="container__left__content">
-                                    <div className="chat__massages__body__text__light">
-                                        {/* {
-                                                messages.map(message => (
-                                                    <p>{message}</p>
-                                                ))
-                                            } */}
-                                        <Message username={message.username} text={message.text} />
-                                        {/* <p>{message}</p> */}
+                            // users.map((user) => (
+                            <div
+                            // key={user.id}
+                            >
+                                <div className="container__left">
+                                    <div clasName="container__left__content">
+                                        <div className="chat__massages__body__text__light">
 
-                                        {/* <p>{user.title}</p> */}
-                                        <div className="chat__massages__body__left__effect"></div>
-                                        <div className="chat__massages__body__left__back"></div>
+                                            <Message username={message.username} text={message.message} />
+                                            <div className="chat__massages__body__left__effect"></div>
+                                            <div className="chat__massages__body__left__back"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="chat__massages__body__tik__blue__place">
-                                    <div className="chat__massages__body__tik__icons">
-                                        <CheckOutlinedIcon className="tik__unread" />
-                                        <DoneAllOutlinedIcon className="tik__read" />
-                                    </div>
-                                    <div class="left__tik__sent__time">
-                                        <p>{time}</p>
+                                    <div className="chat__massages__body__tik__blue__place">
+                                        <div className="chat__massages__body__tik__icons">
+                                            <CheckOutlinedIcon className="tik__unread" />
+                                            <DoneAllOutlinedIcon className="tik__read" />
+                                        </div>
+                                        <div class="left__tik__sent__time">
+                                            <p>{time}</p>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            // </div>
 
+                            // )
+                        ))
+                        // )
+
+                        :
+                        messages.map(message => (
+                            < div className="container__right" >
+                                <div className="container__right__content">
+                                    <div className="chat__massages__body__text__dark">
+                                        <Message username={message.username} text={message.message} />
+                                    </div>
+                                    <div className="right__tik__sent__time">
+                                        <p>{time}</p>
+                                        {/* <span>PM</span> */}
+                                    </div>
+
+                                    <div className="chat__massages__body__image">
+                                        <Avatar classaName="right" />
+                                    </div>
+                                </div>
+                            </div>
                         ))
                     }
-
-                    < div className="container__right" >
-                        <div className="container__right__content">
-                            <div className="chat__massages__body__text__dark">
-                                <p>Kodirov</p>
-                            </div>
-                            <div className="right__tik__sent__time">
-                                <p>{time}</p>
-                                {/* <span>PM</span> */}
-                            </div>
-
-                            <div className="chat__massages__body__image">
-                                <Avatar classaName="right" />
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <form onSubmit={sendMessage} >
 
